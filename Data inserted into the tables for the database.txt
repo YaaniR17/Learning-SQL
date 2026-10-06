@@ -1,0 +1,42 @@
+INSERT INTO Patients (
+    ID, Firstname, Lastname, Age, Date_of_Birth, 
+    Phone_Number, Date_of_Admission, National_Insurance_Number, 
+    NHS_Number, Infection_Status
+) 
+VALUES (
+    1, 'Ayaan', 'Shahzad', 16, '2009-08-28', 
+    '07417496116', '2026-05-12', 'AB123456C', 
+    987654321, 'Negative'
+);
+
+
+INSERT INTO Medical_Examinations (Exam_ID, Patient_ID, Date_of_Exam, Temperature, Blood_Pressure, Oxygen_Saturation, Symptoms_Description) VALUES
+(1, 101, '2026-05-10', 36.6, '120/80', 98, 'Routine checkup, no complaints.'),
+(2, 102, '2026-05-11', 38.5, '130/85', 96, 'Mild fever, dry cough, fatigue.'),
+(3, 103, '2026-05-12', 36.8, '145/90', 99, 'Occasional headaches, high blood pressure monitoring.'),
+(4, 104, '2026-05-13', 39.1, '115/75', 93, 'Severe chills, shortness of breath, productive cough.'),
+(5, 105, '2026-05-14', 36.5, '110/70', 97, 'Patient reports mild dizziness upon standing.');
+
+
+INSERT INTO Laboratory_Tests (Test_ID, Patient_ID, Test_Date, Test_Type, Result, IgM_Level, Platelet_Count) VALUES
+(1, 101, '2026-05-10', 'Complete Blood Count', 'Normal', 0.2, 250000),
+(2, 102, '2026-05-11', 'Dengue Serology', 'Positive', 3.5, 95000),
+(3, 103, '2026-05-12', 'Thyroid Panel', 'Normal', 0.1, 310000),
+(4, 104, '2026-05-13', 'Covid-19 Antibody', 'Positive', 4.2, 180000),
+(5, 105, '2026-05-14', 'Liver Function', 'Abnormal', 0.5, 120000);
+
+
+INSERT INTO Environmental_Exposure (Exposure_ID, Patient_ID, Location_Type, Animal_Contact_Confirmed, Recent_Activity, Exposure_Date) VALUES
+(1, 101, 'Urban', 0, 'Routine office work and daily city commute.', '2026-05-10'),
+(2, 102, 'Rural Farm', 1, 'Feeding livestock and handling stray dogs.', '2026-05-11'),
+(3, 103, 'Forest', 1, 'Hiking, camping, and clearing thick brush.', '2026-05-12'),
+(4, 104, 'Suburban', 0, 'Gardening and cleaning the backyard shed.', '2026-05-13'),
+(5, 105, 'Wet Market', 1, 'Purchasing live poultry and fresh seafood.', '2026-05-14');
+
+
+INSERT INTO Hantavirus_Species (Species_ID, Virus_Name, Common_Host_Animal, Typical_Region, Severity_Level) VALUES
+(1, 'Sin Nombre virus', 'Deer mouse', 'North America', 'High'),
+(2, 'Andes virus', 'Long-tailed pygmy rice rat', 'South America', 'High'),
+(3, 'Hantaan virus', 'Striped field mouse', 'Asia', 'High'),
+(4, 'Puumala virus', 'Bank vole', 'Europe', 'Low to Moderate'),
+(5, 'Seoul virus', 'Brown rat', 'Worldwide', 'Moderate');

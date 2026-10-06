@@ -1,0 +1,67 @@
+CREATE TABLE Patients (
+    ID INTEGER PRIMARY KEY,
+    Firstname TEXT,
+    Lastname TEXT,
+    Age INTEGER,
+    Date_of_Birth TEXT,
+    Phone_Number TEXT,
+    Date_of_Admission TEXT,
+    National_Insurance_Number TEXT,
+    NHS_Number INTEGER,
+    Infection_Status TEXT
+);
+
+
+INSERT INTO Patients (
+    ID, Firstname, Lastname, Age, Date_of_Birth, 
+    Phone_Number, Date_of_Admission, National_Insurance_Number, 
+    NHS_Number, Infection_Status
+) 
+VALUES (
+    1, 'Ayaan', 'Shahzad', 16, '2009-08-28', 
+    '07417496116', '2026-05-12', 'AB123456C', 
+    987654321, 'Negative'
+);
+
+
+Step 1:  Vagrant up and then vagrant ssh
+Step 2:  install sqlite3: sudo apt install sqlite3
+Step 3:  create database: sqlite3 sharks.db
+step 4:  create a table like the one at the top of this page and save it to a schema.sql file
+Step 5:  put the schema file into the shared windows folder of the vm
+Step 6:  type ls /shared
+Step 7:  to link it with the database type: sharks.db < /shared/schema.sql
+
+To show the tables you have made type: .tables
+
+To exit sqlite type .exit
+
+to insert values into the tables type: 
+INSERT INTO sharks VALUES (1, 'Sammy', 'Greenland Shark', 427);
+INSERT INTO sharks VALUES (2, 'Alyoshka', 'Great White Shark', 600);
+INSERT INTO sharks VALUES (3, 'Himari', 'Megalodon', 1800);
+
+To select data type: SELECT * FROM sharks;
+
+To update values in tables type: 
+ALTER TABLE sharks ADD COLUMN age integer;
+UPDATE sharks SET age = 272 WHERE id=1;
+UPDATE sharks SET age = 70 WHERE id=2;
+UPDATE sharks SET age = 40 WHERE id=3;
+
+To verify type: SELECT * FROM sharks;
+
+To delete records type: DELETE FROM sharks WHERE age <= 200;
+To confirm type: SELECT * FROM sharks;
+
+To join tables first make an endangered table by typing: 
+CREATE TABLE endangered (id integer NOT NULL, status text NOT NULL);
+INSERT INTO endangered VALUES (1, 'near threatened');
+
+To join them now type: SELECT * FROM sharks INNER JOIN endangered ON sharks.id = endangered.id;
+To avoid duplicate columns type: 
+SELECT sharks.id, sharks.name, sharks.sharktype, sharks.length, sharks.age, endangered.status FROM sharks INNER JOIN endangered ON sharks.id = endangered.id;
+
+To backup first exit by typing: .exit
+Then type: sqlite3 sharks.db ".backup sharks_backup.db"
+To confirm type: ls -la sharks_backup.db
